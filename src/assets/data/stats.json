@@ -1,0 +1,26 @@
+[
+  {
+    "abbreviation": "str",
+    "name": "Strength"
+  },
+  {
+    "abbreviation": "dex",
+    "name": "Dexterity"
+  },
+  {
+    "abbreviation": "con",
+    "name": "Constitution"
+  },
+  {
+    "abbreviation": "int",
+    "name": "Intelligence"
+  },
+  {
+    "abbreviation": "wis",
+    "name": "Wisdom"
+  },
+  {
+    "abbreviation": "cha",
+    "name": "Charisma"
+  }
+]

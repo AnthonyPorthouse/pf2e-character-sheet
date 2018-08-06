@@ -1,5 +1,6 @@
 <template>
   <div class="Stat">
+    <span>{{ statName }}</span>
     <input
       type="number"
       min="0"
@@ -8,13 +9,11 @@
     <input
       type="text"
       readonly
-      :value="getStatMod">
+      :value="statMod">
   </div>
 </template>
 
 <script>
-    import {mapGetters} from 'vuex';
-
     export default {
         name: 'Stat',
 
@@ -26,9 +25,13 @@
         },
 
         computed: {
+            statName() {
+                return this.getStat.name;
+            },
+
             statValue: {
                 get() {
-                    return this.getStat;
+                    return this.getStat.value;
                 },
                 set(value) {
                     this.$store.commit('stats/setStat', {
@@ -38,20 +41,21 @@
                 }
             },
 
+            statMod() {
+                return this.getStat.mod;
+            },
+
             getStat() {
                 if (!this.stat) {
-                    return 10;
+                    return {
+                        name: '',
+                        abbreviation: '',
+                        value: 10,
+                        mod: 0,
+                    };
                 }
 
                 return this.$store.getters[`stats/${this.stat}`];
-            },
-
-            getStatMod() {
-                if (!this.stat) {
-                    return 0;
-                }
-
-                return this.$store.getters[`stats/${this.stat}Mod`];
             },
         },
 

@@ -1,66 +1,37 @@
-const state = {
-    str: 10,
-    dex: 10,
-    con: 10,
-    int: 10,
-    wis: 10,
-    cha: 10,
+import Vue from 'vue';
 
-    strMod: 0,
-    dexMod: 0,
-    conMod: 0,
-    intMod: 0,
-    wisMod: 0,
-    chaMod: 0,
+import stats from '../assets/data/stats.json';
+
+const state = {
 };
 
 const mutations = {
     setStat(state, payload) {
-        state[payload.stat] = payload.value;
-        state[`${payload.stat}Mod`] = Math.floor((payload.value - 10) / 2);
+        Vue.set(state[payload.stat], 'value', payload.value);
+        Vue.set(state[payload.stat], 'mod', Math.floor((payload.value - 10) / 2));
     }
 };
 
 const actions = {};
 
 const getters = {
-    str(state) {
-        return state.str;
-    },
-    strMod(state) {
-        return state.strMod;
-    },
-    dex(state) {
-        return state.dex;
-    },
-    dexMod(state) {
-        return state.dexMod;
-    },
-    con(state) {
-        return state.con;
-    },
-    conMod(state) {
-        return state.conMod;
-    },
-    int(state) {
-        return state.int;
-    },
-    intMod(state) {
-        return state.intMod;
-    },
-    wis(state) {
-        return state.wis;
-    },
-    wisMod(state) {
-        return state.wisMod;
-    },
-    cha(state) {
-        return state.cha;
-    },
-    chaMod(state) {
-        return state.chaMod;
+    allStats() {
+        return Object.keys(state);
     },
 };
+
+Array.from(stats).forEach((data) => {
+    state[data.abbreviation] = {
+        abbreviation: data.abbreviation,
+        name: data.name,
+        value: 10,
+        mod: 0,
+    };
+
+    getters[data.abbreviation] = (state) => {
+        return state[data.abbreviation];
+    };
+});
 
 export default {
     namespaced: true,

@@ -1,15 +1,15 @@
 <template>
   <div class="StatBlock">
-    <Stat stat="str"/>
-    <Stat stat="dex"/>
-    <Stat stat="con"/>
-    <Stat stat="int"/>
-    <Stat stat="wis"/>
-    <Stat stat="cha"/>
+    <Stat
+      :key="stat"
+      v-for="stat in allStats"
+      :stat="stat" />
   </div>
 </template>
 
 <script>
+    import { mapGetters } from 'vuex';
+
     import Stat from './Stat';
 
     export default {
@@ -17,6 +17,12 @@
 
         components: {
             Stat,
+        },
+
+        computed: {
+            ...mapGetters('stats', [
+                'allStats',
+            ]),
         },
     };
 </script>
