@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Dwarf",
+    "boosts": [
+      "con",
+      "wis",
+      "free"
+    ],
+    "flaws": [
+      "cha"
+    ]
+  },
+  {
+    "name": "Human",
+    "boosts": [
+      "free",
+      "free"
+    ],
+    "flaws": []
+  }
+
+]

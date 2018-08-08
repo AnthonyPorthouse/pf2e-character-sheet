@@ -1,35 +1,67 @@
 import Vue from 'vue';
 
+import statService from '../services/statService';
+
 import stats from '../assets/data/stats.json';
 
 const state = {
+    flaws: {},
+    boosts: {},
+
+    statKeys: [],
+    stats: {},
 };
 
 const mutations = {
-    setStat(state, payload) {
-        Vue.set(state[payload.stat], 'value', payload.value);
-        Vue.set(state[payload.stat], 'mod', Math.floor((payload.value - 10) / 2));
-    }
+    addFlaw(state, payload) {
+        Vue.set(state.flaws, payload.source, payload.payload.stat);
+    },
+    removeFlaw(state, source) {
+        Vue.delete(state.flaws, source);
+    },
+    addBoost(state, payload) {
+        Vue.set(state.boosts, payload.source, payload.payload.stat);
+    },
+    removeBoost(state, source) {
+        Vue.delete(state.boosts, source);
+    },
 };
 
 const actions = {};
 
 const getters = {
     allStats() {
-        return Object.keys(state);
+        return state.statKeys;
     },
+
+    getFlaws: () => (stat) => {
+        return [];
+    },
+
+    getBoosts: () => (stat) => {
+        return [];
+    }
 };
 
 Array.from(stats).forEach((data) => {
-    state[data.abbreviation] = {
+    const abbreviation = data.abbreviation;
+
+    state.statKeys.push(abbreviation);
+
+    state.stats[abbreviation] = {
         abbreviation: data.abbreviation,
         name: data.name,
-        value: 10,
-        mod: 0,
     };
 
-    getters[data.abbreviation] = (state) => {
-        return state[data.abbreviation];
+    getters[data.abbreviation] = (state, getters) => {
+        let stat = state.stats[abbreviation];
+        stat.value = statService.calculateStat(stat.abbreviation, {
+            flaws: getters.getFlaws(abbreviation),
+            boosts: getters.getBoosts(abbreviation),
+        });
+        stat.modifier = statService.calculateModifier(stat.value);
+
+        return stat;
     };
 });
 

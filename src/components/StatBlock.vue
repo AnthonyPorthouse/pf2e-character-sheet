@@ -10,7 +10,7 @@
 <script>
     import { mapGetters } from 'vuex';
 
-    import Stat from './Stat';
+    import Stat from './Stat.vue';
 
     export default {
         name: 'StatBlock',

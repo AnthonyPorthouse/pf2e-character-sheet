@@ -42,7 +42,7 @@
             },
 
             statMod() {
-                return this.getStat.mod;
+                return this.getStat.modifier;
             },
 
             getStat() {
@@ -51,7 +51,7 @@
                         name: '',
                         abbreviation: '',
                         value: 10,
-                        mod: 0,
+                        modifier: 0,
                     };
                 }
 

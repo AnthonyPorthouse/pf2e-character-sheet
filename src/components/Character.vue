@@ -3,13 +3,13 @@
 </template>
 
 <script>
-    import StatBlock from './StatBlock';
+    import StatBlock from './StatBlock.vue';
 
     export default {
         name: 'Character',
 
         components: {
-            StatBlock
-        }
+            StatBlock,
+        },
     }
 </script>
