@@ -1,5 +1,6 @@
 [
   {
+    "id": "dwarf",
     "name": "Dwarf",
     "boosts": [
       "con",
@@ -11,6 +12,7 @@
     ]
   },
   {
+    "id": "human",
     "name": "Human",
     "boosts": [
       "free",

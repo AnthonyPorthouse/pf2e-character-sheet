@@ -1,5 +1,13 @@
 <template>
   <div class="RaceSelection">
-    <h1>This is an about page</h1>
+    <h1>Race</h1>
   </div>
 </template>
+
+<script>
+export default {
+    components: {
+
+    }
+}
+</script>

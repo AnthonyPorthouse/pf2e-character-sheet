@@ -14,13 +14,13 @@ const state = {
 
 const mutations = {
     addFlaw(state, payload) {
-        Vue.set(state.flaws, payload.source, payload.payload.stat);
+        Vue.set(state.flaws, payload.source, payload.stat);
     },
     removeFlaw(state, source) {
         Vue.delete(state.flaws, source);
     },
     addBoost(state, payload) {
-        Vue.set(state.boosts, payload.source, payload.payload.stat);
+        Vue.set(state.boosts, payload.source, payload.stat);
     },
     removeBoost(state, source) {
         Vue.delete(state.boosts, source);
@@ -35,11 +35,15 @@ const getters = {
     },
 
     getFlaws: () => (stat) => {
-        return [];
+        return Object.keys(state.flaws)
+            .filter((key) => state.flaws[key] === stat)
+            .reduce((object, key) => object[key] = state.flaws[key], {});
     },
 
     getBoosts: () => (stat) => {
-        return [];
+        return Object.keys(state.boosts)
+            .filter((key) => state.boosts[key] === stat)
+            .reduce((object, key) => object[key] = state.boosts[key], {});
     }
 };
 
