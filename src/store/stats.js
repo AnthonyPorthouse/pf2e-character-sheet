@@ -34,17 +34,9 @@ const getters = {
         return state.statKeys;
     },
 
-    getFlaws: () => (stat) => {
-        return Object.keys(state.flaws)
-            .filter((key) => state.flaws[key] === stat)
-            .reduce((object, key) => object[key] = state.flaws[key], {});
-    },
+    getFlaws: () => (stat) => statService.findModificationsForStat(stat, state.flaws),
 
-    getBoosts: () => (stat) => {
-        return Object.keys(state.boosts)
-            .filter((key) => state.boosts[key] === stat)
-            .reduce((object, key) => object[key] = state.boosts[key], {});
-    }
+    getBoosts: () => (stat) => statService.findModificationsForStat(stat, state.boosts),
 };
 
 Array.from(stats).forEach((data) => {

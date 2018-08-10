@@ -23,4 +23,18 @@ export default {
     calculateModifier(value) {
         return Math.floor(value / 2) - 5;
     },
+
+    /**
+     * Gets all the Boosts/Flaws for a given stat
+     * @param {string} stat
+     * @param {object} modifiers
+     */
+    findModificationsForStat(stat, modifiers) {
+        return Object.keys(modifiers)
+            .filter((key) => modifiers[key] === stat)
+            .reduce((carry, key) => {
+                carry[key] = modifiers[key];
+                return carry
+            }, {});
+    }
 }
