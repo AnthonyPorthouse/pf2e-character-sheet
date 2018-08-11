@@ -6,11 +6,11 @@ export default {
      */
     calculateStat(statName, options) {
         const baseStat = 10;
-        const flaws = (options.flaws || []);
-        const boosts = (options.boosts || []);
+        const flaws = (options.flaws || {});
+        const boosts = (options.boosts || {});
 
-        let stat = flaws.reduce((carry) => (carry - 2) || 1, baseStat);
-        stat = boosts.reduce((carry) => carry + (carry >= 18 ? 1 : 2), stat);
+        let stat = Object.keys(flaws).reduce((carry) => (carry - 2) || 1, baseStat);
+        stat = Object.keys(boosts).reduce((carry) => carry + (carry >= 18 ? 1 : 2), stat);
 
         return stat;
     },
