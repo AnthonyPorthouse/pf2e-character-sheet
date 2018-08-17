@@ -13,13 +13,13 @@ const state = {
 };
 
 const mutations = {
-    addFlaw(state, payload) {
+    setFlaw(state, payload) {
         Vue.set(state.flaws, payload.source, payload.stat);
     },
     removeFlaw(state, source) {
         Vue.delete(state.flaws, source);
     },
-    addBoost(state, payload) {
+    setBoost(state, payload) {
         Vue.set(state.boosts, payload.source, payload.stat);
     },
     removeBoost(state, source) {

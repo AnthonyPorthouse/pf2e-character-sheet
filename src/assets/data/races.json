@@ -5,7 +5,7 @@
     "boosts": [
       "con",
       "wis",
-      "free"
+      "*"
     ],
     "flaws": [
       "cha"
@@ -15,8 +15,8 @@
     "id": "human",
     "name": "Human",
     "boosts": [
-      "free",
-      "free"
+      "*",
+      "*"
     ],
     "flaws": []
   }
