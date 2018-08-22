@@ -1,4 +1,5 @@
 # pf2e-character-sheet
+[![Build Status](https://travis-ci.com/AnthonyPorthouse/pf2e-character-sheet.svg?branch=master)](https://travis-ci.com/AnthonyPorthouse/pf2e-character-sheet)
 
 ## Project setup
 ```
