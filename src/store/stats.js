@@ -16,13 +16,13 @@ const mutations = {
     setFlaw(state, payload) {
         Vue.set(state.flaws, payload.source, payload.stat);
     },
-    removeFlaw(state, source) {
+    unsetFlaw(state, source) {
         Vue.delete(state.flaws, source);
     },
     setBoost(state, payload) {
         Vue.set(state.boosts, payload.source, payload.stat);
     },
-    removeBoost(state, source) {
+    unsetBoost(state, source) {
         Vue.delete(state.boosts, source);
     },
 };
@@ -34,9 +34,17 @@ const getters = {
         return state.statKeys;
     },
 
-    getFlaws: () => (stat) => statService.findModificationsForStat(stat, state.flaws),
+    getBoosts() {
+        return state.boosts;
+    },
 
-    getBoosts: () => (stat) => statService.findModificationsForStat(stat, state.boosts),
+    getFlaws() {
+        return state.flaws;
+    },
+
+    getFlawsForStat: () => (stat) => statService.findModificationsForStat(stat, state.flaws),
+
+    getBoostsForStat: () => (stat) => statService.findModificationsForStat(stat, state.boosts),
 };
 
 Array.from(stats).forEach((data) => {
@@ -52,8 +60,8 @@ Array.from(stats).forEach((data) => {
     getters[data.abbreviation] = (state, getters) => {
         let stat = state.stats[abbreviation];
         stat.value = statService.calculateStat(stat.abbreviation, {
-            flaws: getters.getFlaws(abbreviation),
-            boosts: getters.getBoosts(abbreviation),
+            flaws: getters.getFlawsForStat(abbreviation),
+            boosts: getters.getBoostsForStat(abbreviation),
         });
         stat.modifier = statService.calculateModifier(stat.value);
 
