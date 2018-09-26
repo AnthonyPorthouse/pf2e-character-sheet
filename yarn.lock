@@ -712,11 +712,11 @@
     eslint-loader "^2.0.0"
     eslint-plugin-vue "^4.5.0"
 
-"@vue/cli-plugin-unit-jest@^3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-unit-jest/-/cli-plugin-unit-jest-3.0.3.tgz#4b2dde19edcd09d275e11cc193dfc8fdf167896c"
+"@vue/cli-plugin-unit-jest@^3.0.4":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-unit-jest/-/cli-plugin-unit-jest-3.0.4.tgz#28196d85f6aab1b4045fce40cf194b9b6001009c"
   dependencies:
-    "@vue/cli-shared-utils" "^3.0.2"
+    "@vue/cli-shared-utils" "^3.0.4"
     babel-jest "^23.4.0"
     babel-plugin-transform-es2015-modules-commonjs "^6.26.2"
     jest "^23.4.0"
